@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SnowCommerce_CMSVersions>
+            <active>true</active>
+            <codePool>local</codePool>
+        </SnowCommerce_CMSVersions>
+    </modules>
+</config>

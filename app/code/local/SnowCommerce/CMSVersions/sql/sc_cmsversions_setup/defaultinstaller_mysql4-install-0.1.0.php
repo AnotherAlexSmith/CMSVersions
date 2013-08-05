@@ -19,7 +19,8 @@ $table = $installer->getConnection()
         'unsigned'  => true,
         'nullable'  => false,
     ), 'Version')
-    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, 'Content')
+    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, array(
+    ), 'Content')
     ->addColumn('admin_name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
     ), 'Comment')
     ->addColumn('identifier', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
@@ -55,7 +56,8 @@ $table = $installer->getConnection()
         'unsigned'  => true,
         'nullable'  => false,
     ), 'Version')
-    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, 'Content')
+    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, array(
+    ), 'Content')
     ->addColumn('admin_name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
     ), 'Comment')
     ->addIndex($installer->getIdxName('sc_cmsversions_block', array('entity_id')),

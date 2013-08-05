@@ -94,20 +94,20 @@
             </model_save_after>
             <cms_page_load_after>
                 <observers>
-                    <sc_cmspagesaving>
+                    <sc_cmsdefaultpagesaving>
                         <type>singleton</type>
                         <class>SnowCommerce_CMSVersions_Model_Observer</class>
                         <method>DefaultPageVersion</method>
-                    </sc_cmspagesaving>
+                    </sc_cmsdefaultpagesaving>
                 </observers>
             </cms_page_load_after>
             <core_abstract_load_after>
                 <observers>
-                    <sc_cmsblocksaving>
+                    <sc_cmsdefaultblocksaving>
                         <type>singleton</type>
                         <class>SnowCommerce_CMSVersions_Model_Observer</class>
                         <method>DefaultBlockVersion</method>
-                    </sc_cmsblocksaving>
+                    </sc_cmsdefaultblocksaving>
                 </observers>
             </core_abstract_load_after>
         </events>

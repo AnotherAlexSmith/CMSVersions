@@ -1,10 +1,6 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: alex
- * Date: 25.07.13
- * Time: 16:19
- * To change this template use File | Settings | File Templates.
+ * Class SnowCommerce_CMSVersions_Block_Adminhtml_Pages_Versions_Grid
  */
 
 class SnowCommerce_CMSVersions_Block_Adminhtml_Pages_Versions_Grid extends Mage_Adminhtml_Block_Widget_Grid
@@ -74,6 +70,11 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Pages_Versions_Grid extends Mage_
         return parent::_prepareColumns();
     }
 
+    /**
+     * Gets row's URL
+     * @param $row
+     * @return string
+     */
     public function getRowUrl($row)
     {
         return $this->getUrl('*/page/index', array('version_id' => $row->getId()));

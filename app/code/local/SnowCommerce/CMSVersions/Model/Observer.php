@@ -1,14 +1,14 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: alex
- * Date: 26.07.13
- * Time: 13:10
- * To change this template use File | Settings | File Templates.
+ * Class SnowCommerce_CMSVersions_Model_Observer
  */
 
 class SnowCommerce_CMSVersions_Model_Observer
 {
+    /**
+     * Puts page's saving version to the database
+     * @param $observer
+     */
     public function SavePageVersion($observer)
     {
         $user = Mage::getSingleton('admin/session')->getUser();
@@ -28,6 +28,10 @@ class SnowCommerce_CMSVersions_Model_Observer
         }
     }
 
+    /**
+     * Puts block's saving version to the database
+     * @param $observer
+     */
     public function SaveBlockVersion($observer)
     {
         $user = Mage::getSingleton('admin/session')->getUser();
@@ -49,6 +53,10 @@ class SnowCommerce_CMSVersions_Model_Observer
         }
     }
 
+    /**
+     * Saves default pages' versions
+     * @param $observer
+     */
     public function DefaultPageVersion($observer)
     {
         $collection = Mage::getModel('sc_cmsversions/page')->getCollection();
@@ -61,6 +69,10 @@ class SnowCommerce_CMSVersions_Model_Observer
         }
     }
 
+    /**
+     * Saves default blocks' versions
+     * @param $observer
+     */
     public function DefaultBlockVersion($observer)
     {
         $block = $observer->getObject();

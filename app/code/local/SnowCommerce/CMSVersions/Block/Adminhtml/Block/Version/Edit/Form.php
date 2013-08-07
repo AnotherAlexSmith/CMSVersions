@@ -30,6 +30,9 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Version_Edit_Form extends M
         }
     }
 
+    /**
+     * @return Mage_Adminhtml_Block_Widget_Form
+     */
     protected function _prepareForm()
     {
         $model = Mage::registry('cms_block_version');
@@ -109,7 +112,6 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Version_Edit_Form extends M
         ));
 
         $form->setValues($model->getData());
-//        $form->setUseContainer(false);
         $this->setForm($form);
 
         return parent::_prepareForm();

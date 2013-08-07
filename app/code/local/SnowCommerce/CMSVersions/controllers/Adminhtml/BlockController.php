@@ -1,20 +1,22 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: alex
- * Date: 25.07.13
- * Time: 16:21
- * To change this template use File | Settings | File Templates.
+ * Class SnowCommerce_CMSVersions_Adminhtml_BlockController
  */
 
 class SnowCommerce_CMSVersions_Adminhtml_BlockController extends Mage_Adminhtml_Controller_Action
 {
+    /**
+     * @return $this
+     */
     public function _initAction()
     {
         $this->loadLayout();
         return $this;
     }
 
+    /**
+     * Index action
+     */
     public function indexAction()
     {
         $this->_title($this->__('CMS'))
@@ -42,6 +44,9 @@ class SnowCommerce_CMSVersions_Adminhtml_BlockController extends Mage_Adminhtml_
             ->renderLayout();
     }
 
+    /**
+     * Confirm action
+     */
     public function confirmAction()
     {
         if ($id = $this->getRequest()->getParam('version_id')) {
@@ -73,6 +78,9 @@ class SnowCommerce_CMSVersions_Adminhtml_BlockController extends Mage_Adminhtml_
         $this->_redirect('*/*/*');
     }
 
+    /**
+     * Delete action
+     */
     public function deleteAction()
     {
         // check if we know what should be deleted

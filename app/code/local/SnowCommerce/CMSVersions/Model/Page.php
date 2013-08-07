@@ -1,10 +1,6 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: alex
- * Date: 25.07.13
- * Time: 18:56
- * To change this template use File | Settings | File Templates.
+ * Class SnowCommerce_CMSVersions_Model_Page
  */
 
 class SnowCommerce_CMSVersions_Model_Page extends Mage_Core_Model_Abstract

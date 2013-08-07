@@ -1,10 +1,6 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: alex
- * Date: 30.07.13
- * Time: 14:21
- * To change this template use File | Settings | File Templates.
+ * Class SnowCommerce_CMSVersions_Block_Adminhtml_Pages_Edit_Form
  */
 
 class SnowCommerce_CMSVersions_Block_Adminhtml_Pages_Edit_Form extends Mage_Adminhtml_Block_Widget_Form

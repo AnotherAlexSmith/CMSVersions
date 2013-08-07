@@ -21,21 +21,41 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Pages_Versions extends Mage_Admin
         $this->_removeButton('add');
     }
 
+    /**
+     * Prepare label for tab
+     *
+     * @return string
+     */
     public function getTabLabel()
     {
         return Mage::helper('cms')->__('Versions');
     }
 
+    /**
+     * Prepare title for tab
+     *
+     * @return string
+     */
     public function getTabTitle()
     {
         return Mage::helper('cms')->__('Versions');
     }
 
+    /**
+     * Returns status flag about this tab can be shown or not
+     *
+     * @return true
+     */
     public function canShowTab()
     {
         return true;
     }
 
+    /**
+     * Returns status flag about this tab hidden or not
+     *
+     * @return true
+     */
     public function isHidden()
     {
         return false;

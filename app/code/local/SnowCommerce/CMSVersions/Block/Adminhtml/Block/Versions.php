@@ -1,10 +1,6 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: alex
- * Date: 25.07.13
- * Time: 16:08
- * To change this template use File | Settings | File Templates.
+ * Class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Versions
  */
 
 class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Versions extends Mage_Adminhtml_Block_Widget_Grid_Container
@@ -21,21 +17,41 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Versions extends Mage_Admin
         $this->_removeButton('add');
     }
 
+    /**
+     * Prepare label for tab
+     *
+     * @return string
+     */
     public function getTabLabel()
     {
         return Mage::helper('sc_cmsversions')->__('Versions');
     }
 
+    /**
+     * Prepare title for tab
+     *
+     * @return string
+     */
     public function getTabTitle()
     {
         return Mage::helper('sc_cmsversions')->__('Versions');
     }
 
+    /**
+     * Returns status flag about this tab can be shown or not
+     *
+     * @return true
+     */
     public function canShowTab()
     {
         return true;
     }
 
+    /**
+     * Returns status flag about this tab hidden or not
+     *
+     * @return true
+     */
     public function isHidden()
     {
         return false;

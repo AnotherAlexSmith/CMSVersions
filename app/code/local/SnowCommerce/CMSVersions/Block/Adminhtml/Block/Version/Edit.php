@@ -1,10 +1,6 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: alex
- * Date: 30.07.13
- * Time: 14:18
- * To change this template use File | Settings | File Templates.
+ * Class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Version_Edit
  */
 
 class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Version_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
@@ -40,16 +36,28 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Version_Edit extends Mage_A
         $this->_removeButton('save');
     }
 
+    /**
+     * Gets URL of deleting version
+     * @return string
+     */
     public function getDeleteVersionUrl()
     {
         return $this->getUrl('*/block/delete', array('version_id' => $this->getRequest()->getParam('version_id')));
     }
 
+    /**
+     * Gets URL of confirming version
+     * @return string
+     */
     public function getConfirmVersionUrl()
     {
         return $this->getUrl('*/block/confirm', array('version_id' => $this->getRequest()->getParam('version_id')));
     }
 
+    /**
+     * Gets block's URL
+     * @return string
+     */
     public function getBlockUrl()
     {
         $blockModel = Mage::registry('cms_block_version');

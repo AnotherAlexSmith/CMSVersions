@@ -32,10 +32,8 @@
         </reference>
         <reference name="left">
             <block type="sc_cmsversions/adminhtml_block_edit_tabs" name="adminhtml_block_edit_tabs">
-                <!--<block type="adminhtml/cms_block_edit" name="cms_block_edit"></block>-->
                 <block type="sc_cmsversions/adminhtml_block_edit_tab_main" name="adminhtml_block_edit_tab_main" />
                 <block type="sc_cmsversions/adminhtml_block_versions" name="adminhtml_block_versions" />
-                <!--<action method="addTab"><name>main_section</name><block>cms_block_edit</block></action>-->
                 <action method="addTab"><name>main_section</name><block>adminhtml_block_edit_tab_main</block></action>
                 <action method="addTab"><name>versions_section</name><block>adminhtml_block_versions</block></action>
             </block>

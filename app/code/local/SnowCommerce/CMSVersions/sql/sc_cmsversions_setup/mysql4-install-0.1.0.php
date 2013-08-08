@@ -19,11 +19,13 @@ $table = $installer->getConnection()
         'unsigned'  => true,
         'nullable'  => false,
     ), 'Version')
-    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, 'Content')
+    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
+    ), 'Content')
     ->addColumn('admin_name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-    ), 'Comment')
+    ), 'Admin Name')
     ->addColumn('identifier', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-    ), 'Comment')
+    ), 'Identifier')
+    ->addColumn('is_actual', Varien_Db_Ddl_Table::TYPE_BOOLEAN, 'Is Actual')
     ->addIndex($installer->getIdxName('sc_cmsversions_pages', array('entity_id')),
         array('entity_id'))
     ->addForeignKey(
@@ -55,9 +57,11 @@ $table = $installer->getConnection()
         'unsigned'  => true,
         'nullable'  => false,
     ), 'Version')
-    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, 'Content')
+    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
+    ), 'Content')
     ->addColumn('admin_name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-    ), 'Comment')
+    ), 'Admin Name')
+    ->addColumn('is_actual', Varien_Db_Ddl_Table::TYPE_BOOLEAN, 'Is Actual')
     ->addIndex($installer->getIdxName('sc_cmsversions_block', array('entity_id')),
         array('entity_id'))
     ->addForeignKey(

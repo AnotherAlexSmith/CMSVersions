@@ -26,6 +26,13 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Pages_Versions_Grid extends Mage_
 
     protected function _prepareColumns()
     {
+        $this->addColumn('sc_is_actual', array(
+            'header'    => Mage::helper('sc_cmsversions')->__('Is Actual'),
+            'align'     => 'left',
+            'width'     => '50px',
+            'index'     => 'is_actual',
+        ));
+
         $this->addColumn('entity_id', array(
             'header'    => Mage::helper('sc_cmsversions')->__('Version ID'),
             'align'     => 'left',

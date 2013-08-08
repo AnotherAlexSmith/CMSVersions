@@ -6,7 +6,6 @@
 class SnowCommerce_CMSVersions_Model_Observer
 {
     /**
-     * Puts page's saving version to the database
      * @param $observer
      */
     public function SavePageVersion($observer)
@@ -14,6 +13,15 @@ class SnowCommerce_CMSVersions_Model_Observer
         $user = Mage::getSingleton('admin/session')->getUser();
         if($user)
         {
+            $collection = Mage::getModel('sc_cmsversions/page')->getCollection();
+            $collection->addFieldToFilter('page_id',array(
+                "eq" => $observer->getObject()->getPageId()
+            ));
+            foreach($collection as $model)
+            {
+                $model->setIsActual('0');
+                $model->save();
+            }
             $page = $observer->getObject();
             $model = Mage::getModel('sc_cmsversions/page');
             $data = array(
@@ -22,6 +30,7 @@ class SnowCommerce_CMSVersions_Model_Observer
                 'content'       => serialize($page->getData()),
                 'admin_name'    => $user->getUsername(),
                 'identifier'    => $page['identifier'],
+                'is_actual'     => 1,
             );
             $model->setData($data);
             $model->save();
@@ -29,7 +38,6 @@ class SnowCommerce_CMSVersions_Model_Observer
     }
 
     /**
-     * Puts block's saving version to the database
      * @param $observer
      */
     public function SaveBlockVersion($observer)
@@ -40,12 +48,21 @@ class SnowCommerce_CMSVersions_Model_Observer
             $block = $observer->getObject();
             if(get_class($block) == "Mage_Cms_Model_Block")
             {
+                $collection = Mage::getModel('sc_cmsversions/block')->getCollection();
+                $collection->addFieldToFilter('page_id',array(
+                    "eq" => $observer->getObject()->getPageId()
+                ));
+                foreach($collection as $model)
+                {
+                    $model->setIsActual('0');
+                }
                 $model = Mage::getModel('sc_cmsversions/block');
                 $data = array(
                     'block_id'       => $block['block_id'],
                     'version'       => $time = date("Y-m-d H:i:s", Mage::getModel('core/date')->timestamp(time())),
                     'content'       => serialize($block->getData()),
                     'admin_name'    => Mage::getSingleton('admin/session')->getUser()->getUsername(),
+                    'is_actual'     => 1,
                 );
                 $model->setData($data);
                 $model->save();

@@ -56,7 +56,6 @@ class SnowCommerce_CMSVersions_Adminhtml_BlockController extends Mage_Adminhtml_
                 $blockModel = Mage::getModel('cms/block');
                 $model->load($id);
                 $blockModel->setData(unserialize($model->getContent()));
-                $model->delete();
                 $blockModel->save();
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
@@ -89,6 +88,13 @@ class SnowCommerce_CMSVersions_Adminhtml_BlockController extends Mage_Adminhtml_
                 // init model and delete
                 $model = Mage::getModel('sc_cmsversions/block');
                 $model->load($id);
+                if($model->getIsActual() == 1)
+                {
+                    Mage::getSingleton('adminhtml/session')->addError(
+                        Mage::helper('cms')->__("Actual version can't be deleted."));
+                    $this->_redirect('*/block/index', array('version_id' => $this->getRequest()->getParam('version_id')));
+                    return;
+                }
                 $model->delete();
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(

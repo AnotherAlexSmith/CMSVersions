@@ -53,7 +53,6 @@ class SnowCommerce_CMSVersions_Adminhtml_PageController extends Mage_Adminhtml_C
                 $pageModel = Mage::getModel('cms/page');
                 $model->load($id);
                 $pageModel->setData(unserialize($model->getContent()));
-                $model->delete();
                 $pageModel->save();
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
@@ -86,6 +85,13 @@ class SnowCommerce_CMSVersions_Adminhtml_PageController extends Mage_Adminhtml_C
                 // init model and delete
                 $model = Mage::getModel('sc_cmsversions/page');
                 $model->load($id);
+                if($model->getIsActual() == 1)
+                {
+                    Mage::getSingleton('adminhtml/session')->addError(
+                        Mage::helper('cms')->__("Actual version can't be deleted."));
+                    $this->_redirect('*/page/index', array('version_id' => $this->getRequest()->getParam('version_id')));
+                    return;
+                }
                 $model->delete();
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
@@ -101,7 +107,7 @@ class SnowCommerce_CMSVersions_Adminhtml_PageController extends Mage_Adminhtml_C
             }
         }
         // display error message
-        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('cms')->__('Unable to find a page to delete.'));
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('cms')->__('Unable to find a version to delete.'));
         // go to grid
 
         $this->_redirect('*/*/*');

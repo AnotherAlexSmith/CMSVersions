@@ -13,6 +13,9 @@ class SnowCommerce_CMSVersions_Model_Observer
         $user = Mage::getSingleton('admin/session')->getUser();
         if($user)
         {
+            $page = $observer->getObject();
+            if(!($this->WasPageDataChanged($page))) return;
+
             $collection = Mage::getModel('sc_cmsversions/page')->getCollection();
             $collection->addFieldToFilter('page_id',array(
                 "eq" => $observer->getObject()->getPageId()
@@ -22,7 +25,7 @@ class SnowCommerce_CMSVersions_Model_Observer
                 $model->setIsActual('0');
                 $model->save();
             }
-            $page = $observer->getObject();
+
             $model = Mage::getModel('sc_cmsversions/page');
             $data = array(
                 'page_id'       => $page['page_id'],
@@ -46,15 +49,18 @@ class SnowCommerce_CMSVersions_Model_Observer
         if($user)
         {
             $block = $observer->getObject();
+            if(!($this->WasBlockDataChanged($block))) return;
+
             if(get_class($block) == "Mage_Cms_Model_Block")
             {
                 $collection = Mage::getModel('sc_cmsversions/block')->getCollection();
-                $collection->addFieldToFilter('page_id',array(
-                    "eq" => $observer->getObject()->getPageId()
+                $collection->addFieldToFilter('block_id',array(
+                    "eq" => $block->getBlockId()
                 ));
                 foreach($collection as $model)
                 {
                     $model->setIsActual('0');
+                    $model->save();
                 }
                 $model = Mage::getModel('sc_cmsversions/block');
                 $data = array(
@@ -104,5 +110,37 @@ class SnowCommerce_CMSVersions_Model_Observer
                 $this->SaveBlockVersion($observer);
             }
         }
+    }
+
+    /**
+     * Checks was page data changed or not
+     * Да, говнокод, щито поделать
+     * @param $model
+     * @return int
+     */
+    public function WasPageDataChanged($model)
+    {
+        $flag = 0;
+        $set = array("title", "identifier", "is_active", "content_heading", "content", "root_template", "layout_update_xml", "custom_theme_from", "custom_theme_to", "custom_theme", "custom_root_template", "custom_layout_update_xml", "meta_keywords", "meta_description");
+        foreach($set as $field)
+        {
+            $origValue = $model->getOrigData($field);
+            $newValue = $model->getData($field);
+            if($origValue != $newValue) $flag = 1;
+        }
+        return $flag;
+    }
+
+    public function WasBlockDataChanged($model)
+    {
+        $flag = 0;
+        $set = array("title", "identifier", "is_active", "content");
+        foreach($set as $field)
+        {
+            $origValue = $model->getOrigData($field);
+            $newValue = $model->getData($field);
+            if($origValue != $newValue) $flag = 1;
+        }
+        return $flag;
     }
 }

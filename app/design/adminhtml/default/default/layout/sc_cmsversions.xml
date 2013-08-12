@@ -29,6 +29,9 @@
     </adminhtml_page_index>
 
     <adminhtml_cms_block_edit>
+        <reference name="head">
+            <action method="addCss"><stylesheet>versions.css</stylesheet></action>
+        </reference>
         <reference name="content">
             <remove name="cms_block_edit"></remove>
             <block type="sc_cmsversions/adminhtml_block_edit" name="edit"/>

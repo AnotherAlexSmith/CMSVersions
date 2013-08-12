@@ -25,7 +25,7 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Edit_Tab_Main
     protected function _prepareForm()
     {
         $model = Mage::registry('cms_block');
-
+        $yesnoSource = Mage::getModel('adminhtml/system_config_source_yesno')->toOptionArray();
         $form = new Varien_Data_Form(
             array('id' => 'edit_form', 'action' => $this->getData('action'), 'method' => 'post')
         );
@@ -39,6 +39,13 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Block_Edit_Tab_Main
                 'name' => 'block_id',
             ));
         }
+
+        $fieldset->addField('sc_keep_versions', 'select', array(
+            'name'      => 'sc_keep_versions',
+            'label'     => Mage::helper('cms')->__('Keep versions of this block?'),
+            'title'     => Mage::helper('cms')->__('Keep versions of this block?'),
+            'values'    => $yesnoSource,
+        ));
 
         $fieldset->addField('title', 'text', array(
             'name'      => 'title',

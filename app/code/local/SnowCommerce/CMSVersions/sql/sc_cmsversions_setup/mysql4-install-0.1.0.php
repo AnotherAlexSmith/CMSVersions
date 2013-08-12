@@ -77,4 +77,15 @@ $table = $installer->getConnection()
 
 $installer->getConnection()->createTable($table);
 
+$installer->getConnection()->addColumn(
+    $this->getTable('cms_page'), //table name
+    'sc_keep_versions',      //column name
+    'BOOLEAN'  //datatype definition
+);
+
+$installer->getConnection()->addColumn(
+    $this->getTable('cms_block'), //table name
+    'sc_keep_versions',      //column name
+    'BOOLEAN'  //datatype definition
+);
 $installer->endSetup();

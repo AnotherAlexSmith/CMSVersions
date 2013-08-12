@@ -74,6 +74,15 @@
             </sc_cmsversions_read>
         </resources>
         <events>
+            <adminhtml_cms_page_edit_tab_main_prepare_form>
+                <observers>
+                    <sc_addversionsfield>
+                        <type>singleton</type>
+                        <class>SnowCommerce_CMSVersions_Model_Observer</class>
+                        <method>addPageVersionsField</method>
+                    </sc_addversionsfield>
+                </observers>
+            </adminhtml_cms_page_edit_tab_main_prepare_form>
             <cms_page_save_after>
                 <observers>
                     <sc_cmspagesaving>

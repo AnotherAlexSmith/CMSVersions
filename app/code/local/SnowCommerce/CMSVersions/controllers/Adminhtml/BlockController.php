@@ -57,6 +57,7 @@ class SnowCommerce_CMSVersions_Adminhtml_BlockController extends Mage_Adminhtml_
                 $model->load($id);
                 $blockModel->setData(unserialize($model->getContent()));
                 $blockModel->save();
+                $model->delete();
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('cms')->__('The version has been confirmed as actual.'));

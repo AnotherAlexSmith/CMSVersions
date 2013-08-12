@@ -14,7 +14,7 @@ class SnowCommerce_CMSVersions_Block_Adminhtml_Pages_Versions extends Mage_Admin
     {
         $this->_controller = 'adminhtml_pages_versions';
         $this->_blockGroup = 'sc_cmsversions';
-        $this->_headerText = Mage::helper('sc_cmsversions')->__('Versions available');
+        $this->_headerText = Mage::helper('sc_cmsversions')->__('Versions available. Actual version is always at the bottom of the list.');
 
         parent::__construct();
 

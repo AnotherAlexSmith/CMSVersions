@@ -1,4 +1,5 @@
 /app/code/local/SnowCommerce/CMSVersions /app/code/local/SnowCommerce/CMSVersions
 /app/design/adminhtml/default/default/layout/sc_cmsversions.xml /app/design/adminhtml/default/default/layout/sc_cmsversions.xml
+/skin/adminhtml/default/default/versions.css /skin/adminhtml/default/default/versions.css
 /app/etc/modules/SnowCommerce_CMSVersions.xml /app/etc/modules/SnowCommerce_CMSVersions.xml
 /app/etc/modules/SnowCommerce_CMSVersions.xml /app/etc/modules/SnowCommerce_CMSVersions.xml

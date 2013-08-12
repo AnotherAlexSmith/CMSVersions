@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <layout version="0.0.1">
     <adminhtml_cms_page_edit>
+        <reference name="head">
+            <action method="addCss"><stylesheet>versions.css</stylesheet></action>
+        </reference>
         <reference name="cms_page_edit_tabs">
             <block type="sc_cmsversions/adminhtml_pages_versions" name="cms_page_edit_tab_versions" after="cms_page_edit_tab_meta"/>
             <action method="addTab"><name>versions_section</name><block>cms_page_edit_tab_versions</block></action>

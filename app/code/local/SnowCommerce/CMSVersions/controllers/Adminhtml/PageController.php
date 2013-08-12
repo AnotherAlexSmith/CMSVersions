@@ -54,6 +54,7 @@ class SnowCommerce_CMSVersions_Adminhtml_PageController extends Mage_Adminhtml_C
                 $model->load($id);
                 $pageModel->setData(unserialize($model->getContent()));
                 $pageModel->save();
+                $model->delete();
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('cms')->__('The version has been confirmed as actual.'));
